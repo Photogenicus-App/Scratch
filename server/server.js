@@ -14,10 +14,7 @@ const database = (module.exports = () => {
   };
   //try to connect to database with the associated URI, and the connectionParams which we have declared
   try {
-    mongoose.connect(
-      'mongodb+srv://BigT323:BigT323@cluster0.lzo06x7.mongodb.net/scratch?retryWrites=true&w=majority',
-      connectionParams
-    );
+    mongoose.connect(MONGO_URL, connectionParams);
     //log if connection is successful
     console.log('Successfully connected to database');
     //catch block if there is an error
