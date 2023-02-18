@@ -1,3 +1,4 @@
+hello, from the front-end !! xD
 {tailwindcss
 postcss
 postcss-loader
