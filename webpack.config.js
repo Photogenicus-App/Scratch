@@ -27,6 +27,12 @@ module.exports = {
             presets: ['@babel/preset-env', '@babel/preset-react']
           }
         }
+      },
+      // below will be our styling loaders, postcss is required for using tailwindcss
+      {
+        test: /\.css$/i,
+        include: path.resolve(__dirname, 'src'),
+        use: ['style-loader', 'css-loader', 'postcss-loader']
       }
     ]
   },

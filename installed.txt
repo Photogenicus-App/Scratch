@@ -1,6 +1,15 @@
 {tailwindcss
 postcss
-postcss-loader}
+postcss-loader
+npx tailwindcss init
+postcss.config.js (contains what is below)
+module.exports = {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {},
+  },
+};
+autoprefixer(save dev)}
 
 css-loader
 node-fetch

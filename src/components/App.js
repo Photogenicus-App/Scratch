@@ -1,9 +1,15 @@
 // rafce
-import React from 'react'
+import React from 'react';
+import '../index.css';
 
 const App = () => {
   return (
-    <div>WONDER***</div>
+    <div>
+      WONDER***
+      <h1 class="text-3xl font-bold underline">
+      Hello world!
+      </h1>
+    </div>
   )
 }
 
