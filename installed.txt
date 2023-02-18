@@ -23,3 +23,13 @@ brcyptjs
 env-variable
 jwt(jsonwebtoken) - allows an extra layer of auth, session tokens
 concurrently
+
+
+to merge, we:
+git push origin <branch-name>
+we go to github, review the merge and accept on github(if applicable)
+then we checkout to our dev and 
+git pull origin dev
+we should then see our changes merged in dev
+
+test merge
