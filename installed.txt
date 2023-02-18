@@ -1,0 +1,15 @@
+{tailwindcss
+postcss
+postcss-loader}
+
+css-loader
+node-fetch
+express
+mongoose
+mongodb ~
+jsx-a11y - catches errors in jsx files
+nodemon
+brcyptjs
+env-variable
+jwt(jsonwebtoken) - allows an extra layer of auth, session tokens
+concurrently
