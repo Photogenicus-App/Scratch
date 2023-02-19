@@ -28,7 +28,7 @@ module.exports = {
           },
         },
       },
-      // below will be our styling loaders, postcss is required for using tailwindcss
+      // Below will be our styling loaders, postcss is required for using tailwindcss
       {
         test: /\.css$/i,
         include: path.resolve(__dirname, 'src'),
@@ -40,12 +40,12 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  //proxy for the dev server to send all requests from /api/** to localhost3000
+  // Proxy for the dev server to send all requests from /data/** to localhost3000
   devServer: {
     headers: { 'Access-Control-Allow-Origin': '*' },
     historyApiFallback: true,
     proxy: {
-      '/api/**': {
+      '/data/**': {
         target: 'http://localhost:3000',
         secure: false,
       },
