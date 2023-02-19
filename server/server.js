@@ -2,37 +2,59 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+// URI requirements for .env
 require('dotenv').config();
-const url = process.env.MONGO_URL;
+const uri = process.env.MONGO_URI;
+const PORT = 3000;
 
-//connecting to database function
-const database = (module.exports = () => {
-  //parameters for connecting to database
+// Connecting to database function. Async await with a try/catch block
+const database = async () => {
+  // Parameters for connecting to database
   const connectionParams = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   };
-  //try to connect to database with the associated URI, and the connectionParams which we have declared
+  // Try to connect to database with the associated URI, and the connectionParams which we have declared
   try {
-    mongoose.connect(MONGO_URL, connectionParams);
-    //log if connection is successful
+    await mongoose.connect(uri, connectionParams);
+    // Await connection and log if successful
     console.log('Successfully connected to database');
-    //catch block if there is an error
+    // Catch block for failed connections
   } catch (error) {
     console.log(error);
-    console.log('Failed to connect to database');
+    console.log('Failed to connect to the database');
   }
-});
-//calling database
+};
+// Calling database
 database();
 
-//catch all route handler
+// Handle parsing request body
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Import routers
+const libraryRouter = require('./routes/libraryRouter.js');
+
+// Defining route handlers
+app.use('/data', libraryRouter);
+
+// Unknown route handler
 app.use((req, res) => res.status(404).send('This page does not exist'));
 
-//listen on env port or port 3000;
-app.listen(process.env.PORT || 3000, () => {
-  console.log('Back end server is running');
+// Global error handler
+app.use((err, req, res, next) => {
+  const defaultErr = {
+    log: 'Express error handler caught unknown middleware error',
+    status: 400,
+    message: { err: 'An error occurred' },
+  };
+  const errorObj = Object.assign({}, defaultErr, err);
+  console.log(errorObj.log);
+  return res.status(errorObj.status).json(errorObj.message);
 });
 
-//export to app
+// Function to start server with database function
+app.listen(PORT, () => console.log(`Listening on PORT: ${PORT}`));
+
+// Export to app
 module.exports = app;
