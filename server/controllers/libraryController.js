@@ -61,6 +61,45 @@ const LibraryController = {
       });
     }
   },
+
+  // Edit existing library
+  // Using similar async/await and try catch block format as above
+  async editLibrary(req, res, next) {
+    try {
+      // Deconstuct body for sanitization
+      const { _id, title, description, studyMaterial } = req.body;
+      // Use deconstructed id in our first argument of filter, and updated fields in update argument
+      const editLibrary = await Library.findOneAndUpdate(
+        // Filter parameter
+        { _id: _id },
+        // Update parameter
+        {
+          title,
+          description,
+          studyMaterial,
+        },
+        // Setting new to true will return updated document
+        { new: true }
+      );
+      if (!editLibrary) {
+        return next({
+          log: 'Library not edited',
+          status: 400,
+          message: { err: 'No library edited' },
+        });
+      }
+      // Assign new library for return
+      res.locals.editLibrary = editLibrary;
+      return next();
+      // Catch block for other errors within middleware
+    } catch (error) {
+      return next({
+        log: 'Error within editLibrary',
+        status: 400,
+        message: { err: 'Error editing Library' },
+      });
+    }
+  },
   ///other middleware here
 };
 

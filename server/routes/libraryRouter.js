@@ -19,5 +19,10 @@ router.post('/library', LibraryController.newLibrary, (req, res) =>
   res.status(200).json(res.locals.newLibrary)
 );
 
+// Router for editing one instance of our library
+router.put('/library', LibraryController.editLibrary, (req, res) =>
+  res.status(200).json(res.locals.editLibrary)
+);
+
 // Export as router
 module.exports = router;
