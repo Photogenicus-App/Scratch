@@ -23,13 +23,13 @@ const LibraryController = {
       // Catch block to return any other errors other than a null return of finding libraries
     } catch (error) {
       return next({
-        log: 'Error within getLibrary',
+        log: `Error finding library`,
         status: 400,
         message: { err: 'Error finding Library' },
       });
     }
   },
-  // Create new library
+  // Create new library entry
   // Using similar async/await and try catch block format as above
   async newLibrary(req, res, next) {
     try {
@@ -55,20 +55,20 @@ const LibraryController = {
       // Catch block for other errors within middleware
     } catch (error) {
       return next({
-        log: 'Error within newLibrary',
+        log: `Error creating new library`,
         status: 400,
-        message: { err: 'Error creating Library' },
+        message: { err: 'Error creating new Library' },
       });
     }
   },
 
-  // Edit existing library
+  // Edit existing library entry
   // Using similar async/await and try catch block format as above
   async editLibrary(req, res, next) {
     try {
       // Deconstuct body for sanitization
       const { _id, title, description, studyMaterial } = req.body;
-      // Use deconstructed id in our first argument of filter, and updated fields in update argument
+      // Use deconstructed id in our first parameter of filter, and updated fields in second update parameter
       const editLibrary = await Library.findOneAndUpdate(
         // Filter parameter
         { _id: _id },
@@ -81,11 +81,12 @@ const LibraryController = {
         // Setting new to true will return updated document
         { new: true }
       );
+      // Error handler with specific message pointing to id
       if (!editLibrary) {
         return next({
-          log: 'Library not edited',
+          log: `Library not edited for id ${id}`,
           status: 400,
-          message: { err: 'No library edited' },
+          message: { err: `Unable to edit library with id ${id}` },
         });
       }
       // Assign new library for return
@@ -94,13 +95,38 @@ const LibraryController = {
       // Catch block for other errors within middleware
     } catch (error) {
       return next({
-        log: 'Error within editLibrary',
+        log: `Error editing library`,
         status: 400,
         message: { err: 'Error editing Library' },
       });
     }
   },
-  ///other middleware here
+  // Delete an existing library entry
+  async deleteLibrary(req, res, next) {
+    try {
+      // Deconstuct body for sanitization
+      const { _id } = req.body;
+      // Use deconstructed id as our filter parameter
+      const deleteLibrary = await Library.findOneAndDelete({ _id: _id });
+      if (!deleteLibrary) {
+        return next({
+          log: `Library not deleted for id ${id}`,
+          status: 400,
+          message: { err: `Unable to delete library with id ${id}` },
+        });
+      }
+      // Assign deleted library for return
+      res.locals.deleteLibrary = deleteLibrary;
+      return next();
+      // Catch block for other errors within middleware
+    } catch (error) {
+      return next({
+        log: `Error deleting library`,
+        status: 400,
+        message: { err: 'Error deleting Library' },
+      });
+    }
+  },
 };
 
 module.exports = LibraryController;

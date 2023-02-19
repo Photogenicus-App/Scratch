@@ -24,5 +24,10 @@ router.put('/library', LibraryController.editLibrary, (req, res) =>
   res.status(200).json(res.locals.editLibrary)
 );
 
+// Router for deleting one library
+router.delete('/library', LibraryController.deleteLibrary, (req, res) =>
+  res.status(200).json(res.locals.deleteLibrary)
+);
+
 // Export as router
 module.exports = router;

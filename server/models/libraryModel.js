@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-//schema with requirements of title, description, and studyMaterial
+// Schema with requirements of title, description, and studyMaterial. Must be unique from other items in database
 const LibrarySchema = new mongoose.Schema(
   {
     title: { type: String, required: true, unique: true },
