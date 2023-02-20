@@ -9,7 +9,7 @@ const AddLibrary = () => {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({values: event.target})
         }
-        fetch('/add-library', options)
+        fetch('/data/library', options)
         .then((data) => data.json())
         .then((data) => console.log(data))
     }

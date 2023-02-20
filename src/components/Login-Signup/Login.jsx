@@ -10,7 +10,7 @@ const Login = () => {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({values: event.target})
         }
-        fetch('/login', options)
+        fetch('/user/login', options)
         .then((data) => data.json())
         .then((data) => console.log(data))
     }

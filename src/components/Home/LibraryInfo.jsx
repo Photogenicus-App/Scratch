@@ -13,7 +13,7 @@ function LibraryInfo({ title, description, libraries, libId}) {
       </p>
 
       <button>
-        <Link to="ext. that takes us to IndvidualLibrary(will use id)" state={{ libraries: libraries,libId: `${libId}` }}>
+        <Link to={`/${libId}`} state={{ libraries: libraries,libId: `${libId}` }}>
           View Library
         </Link>
       </button>

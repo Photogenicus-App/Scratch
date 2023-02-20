@@ -1,5 +1,4 @@
 import React from 'react';
-import { library } from 'webpack';
 import LibraryInfo from './LibraryInfo.jsx';
 
 // Library component, will render the boxes of library info
@@ -11,7 +10,7 @@ function Library() {
   // invoke useEffect, which performs side effect AFTER our component renders, will fetch our LibraryInfo cards
   useEffect(() => {
     // we fetch our cards
-    fetch('wtvr ext. grabs our libraries from theDB')
+    fetch('/data/library')
       .then((res) => res.json())
       // we update our state to fetched libraries by using setLibraries
       .then((libraryList) => {
@@ -25,7 +24,7 @@ function Library() {
   return (
     <div id="page-container">
       <button>
-        <Link to="/addLibrary">
+        <Link to="/add-library">
           +
         </Link>
       </button>
@@ -34,7 +33,7 @@ function Library() {
         <div>
           <LibraryInfo 
             key={`${i}`} 
-            libId={`${library._id}`} 
+            libId={`${lib._id}`} 
             title={`${lib.title}`} 
             description={`${lib.description}`} 
             libraries={`${libraries}`}
