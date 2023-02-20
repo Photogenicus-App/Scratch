@@ -10,7 +10,7 @@ const UserController = require('../controllers/UserController');
 //set strict query to false
 
 //register
-router.post('/register', UserController.registerUser, (req, res) => {
+router.post('/signup', UserController.registerUser, (req, res) => {
   res.status(200).json(res.locals.newUser);
 });
 

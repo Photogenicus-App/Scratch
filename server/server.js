@@ -38,8 +38,7 @@ const userRouter = require('./routes/userRouter.js');
 
 // Defining route handlers
 app.use('/data', libraryRouter);
-app.use('/', userRouter);
-
+app.use('/user', userRouter);
 
 // Unknown route handler
 app.use((req, res) => res.status(404).send('This page does not exist'));
@@ -61,7 +60,5 @@ app.listen(PORT, () => console.log(`Listening on PORT: ${PORT}`));
 
 // Export to app
 module.exports = app;
-
-
 
 // MONGO_URI=mongodb+srv://BigT323:BigT323@cluster0.lzo06x7.mongodb.net/scratch?retryWrites=true&w=majority
