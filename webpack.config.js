@@ -1,13 +1,15 @@
-const path = require('path');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
-const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
+
+const path = require("path");
+const HTMLWebpackPlugin = require("html-webpack-plugin");
+const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
+
 
 module.exports = {
-  entry: './src/index.js',
+  entry: "./src/index.js",
 
   output: {
-    path: path.join(__dirname, '/dist'),
-    filename: 'bundle.js',
+    path: path.join(__dirname, "/dist"),
+    filename: "bundle.js",
     // publicPath: './src/index.js'
   },
 
@@ -17,7 +19,7 @@ module.exports = {
 
   plugins: [
     new HTMLWebpackPlugin({
-      template: './src/index.html',
+      template: "./src/index.html",
     }),
     new NodePolyfillPlugin(),
   ],
@@ -29,31 +31,35 @@ module.exports = {
         test: /.jsx?/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
+            presets: ["@babel/preset-env", "@babel/preset-react"],
           },
         },
       },
       // Below will be our styling loaders, postcss is required for using tailwindcss
       {
         test: /\.css$/i,
-        include: path.resolve(__dirname, 'src'),
-        use: ['style-loader', 'css-loader', 'postcss-loader'],
+        include: path.resolve(__dirname, "src"),
+        use: ["style-loader", "css-loader", "postcss-loader"],
       },
     ],
   },
 
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: [".js", ".jsx"],
   },
   // Proxy for the dev server to send all requests from /data/** to localhost3000
   devServer: {
-    headers: { 'Access-Control-Allow-Origin': '*' },
+    headers: { "Access-Control-Allow-Origin": "*" },
     historyApiFallback: true,
     proxy: {
-      '/data/**': {
-        target: 'http://localhost:3000',
+      "/user/**": {
+        target: "http://localhost:3000",
+        secure: false,
+      },
+      "/data/**": {
+        target: "http://localhost:3000",
         secure: false,
       },
     },

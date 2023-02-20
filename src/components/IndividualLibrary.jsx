@@ -36,7 +36,7 @@ function IndividualLibrary() {
     };
 
     // then we make a put request to proper url sending our updated library
-    fetch('url that will handle updates', {
+    fetch('/data/library', {
       method: 'PUT',
       headers: {
         'Content-type': 'application/json'
