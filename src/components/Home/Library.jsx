@@ -3,7 +3,6 @@ import LibraryInfo from './LibraryInfo.jsx';
 
 // Library component, will render the boxes of library info
 function Library() {
-
   // we define our initial set(libraries; []) and grab our update state func(setLibraries)
   const [libraries, setLibraries] = useState([]);
 
@@ -24,18 +23,22 @@ function Library() {
   return (
     <div id="page-container">
       <button>
+
         <Link to="/add-library">
           +
         </Link>
+
       </button>
 
       {libraries.map((lib, i) => {
         <div>
+
           <LibraryInfo 
             key={`${i}`} 
             libId={`${lib._id}`} 
             title={`${lib.title}`} 
             description={`${lib.description}`} 
+
             libraries={`${libraries}`}
           />
         </div>;

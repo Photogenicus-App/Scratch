@@ -42,7 +42,8 @@ const LibraryController = {
         studyMaterial,
       });
       // Error handler for error within creating new library
-      if (!newLibrary) {
+      console.log(newLibrary);
+      if (!newLibrary._id) {
         return next({
           log: 'No library created',
           status: 400,
