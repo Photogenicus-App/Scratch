@@ -24,7 +24,7 @@ function Library() {
 
   return (
     <div id="page-container">
-      <button onClick={handleAddLibrary}>
+      <button>
         <Link to="/addLibrary">
           +
         </Link>
