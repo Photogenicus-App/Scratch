@@ -40,12 +40,13 @@ const UserController = {
 async loginUser(req, res, next) {
     //decl newUser 
     //assign post request body inputs to user 
+    
     //try
     try {
-        const {userName, password} = req.body;
-        const userLogin = await User.findOne({
-            userName
-        }, async (err, user)=>{
+        console.log(req.body, `client input`)
+        const {username, password} = req.body;
+        const userLogin = await User.findOne({username}).exec();
+        console.log(userLogin);
             if(!userLogin){
                 return next({
                     log: 'User login unsuccesful',
@@ -54,25 +55,30 @@ async loginUser(req, res, next) {
                   });
             };
             //cond to see if pw does not match 
-            if (user){
+            console.log(password, `client pw entry`);
+            console.log(userLogin.password, `db password`);
+            const userLoginPW = userLogin.password;
                 //declare var to store eval of async bcrypt function to compare hashed vs input pw
-                const valid = await bcrypt.compare(password, user.password); 
+                // const valid = await 
+                const valid = bcrypt.compare(userLoginPW, password).then(
+                    function (result){
+                        console.log(`made it inside bcrypt`)
+                        .then(result)
+                        
+                    }
+                ); 
+                console.log(valid, `valid`)
+                console.log(valid, `valid`)
                 //perform cond if theres an eval then we invoke next middleware (verAuth)
                 if(valid){
                     //declare the access token
+                    res.locals.newUser = newUser;
                     return next();
-    
-                }
-                else res.redirect("/register");
-            }
-            res.locals.newUser = newUser;
-            //return to route hander
-             return next();
-    
-
-        });
+                }else {
+                    res.redirect("/register");
+            //return to route hander  
+        };
         //perform cond to any input is null 
-        
     }
     //catch
     catch (error){
