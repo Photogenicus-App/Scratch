@@ -27,7 +27,7 @@ const Login = () => {
             <div>
                 <form onSubmit={submit}>
                     <label>Username: </label><br/>
-                    <input type="text" placeholder="user123" /><br/>
+                    <input type="text" placeholder="user1234" /><br/>
                     <label>Password: </label><br/>
                     <input type="text" placeholder="qwerty" /><br/>
                     <input type="submit" value="Login" /><br/>
