@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const bcrypt = require("bcryptjs");
+const bcrypt = require('bcrypt');
 const SALT_WORK_FACTOR = 10;
 
 const UserSchema = new mongoose.Schema(
@@ -11,10 +11,10 @@ const UserSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
-UserSchema.pre('save', async function (next){
+UserSchema.pre('save', async function (next) {
   this.password = await bcrypt.hash(this.password, 1);
   return next();
-})
+});
 
 const User = mongoose.model('User', UserSchema);
 

@@ -1,26 +1,25 @@
-// require the JWT session authentication functions for callbacks 
+// require the JWT session authentication functions for callbacks
 //const {verifyTokenAndAuthorization ,verifyTokenAndAuthorizationAndAdmin } = require("../controllers/verifyTokenAndAuthorizationAndAdmin");
-//require in the user model 
-//require in the router 
-const router = require("express").Router();
-const User = require("../models/UserModel");
-const jwt = require("jsonwebtoken");
-const mongoose = require("mongoose");
+//require in the user model
+//require in the router
+const router = require('express').Router();
+const User = require('../models/UserModel');
+const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
 const UserController = require('../controllers/UserController');
-//set strict query to false 
+//set strict query to false
 
 //register
-router.post("/register", UserController.registerUser, (req, res) =>{
-    res.status(200).json(res.locals.newUser);
+router.post('/register', UserController.registerUser, (req, res) => {
+  res.status(200).json(res.locals.newUser);
 });
 
-//login 
-router.post("/login", UserController.loginUser, (req, res) => {
-    res.status(200).json({ ...others, accessToken})
-})
-
-
-
+//login
+router.post('/login', UserController.loginUser, (req, res) => {
+  res
+    .status(200)
+    .json({ message: 'Login successful', user: res.locals.userLogin });
+});
 
 //get
 // router.get('/find/:id', verifyTokenAndAuthorization, (req, res) =>
@@ -44,8 +43,7 @@ router.post("/login", UserController.loginUser, (req, res) => {
 //   res.status(200).json(res.locals.deleteLibrary)
 // );
 
-//update 
+//update
 
-
-//delete 
+//delete
 module.exports = router;
