@@ -7,6 +7,11 @@ module.exports = {
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'bundle.js',
+    // publicPath: './src/index.js'
+  },
+
+  devServer: {
+    historyApiFallback: true
   },
 
   plugins: [
