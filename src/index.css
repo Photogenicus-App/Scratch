@@ -5,3 +5,13 @@
 @layer components {
   
 }
+
+@layer base {
+    li {
+        @apply p-4
+    }
+
+    button {
+        
+    }
+}

@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 function Library() {
   // we define our initial set(libraries; []) and grab our update state func(setLibraries)
   const [libraries, setLibraries] = useState([]);
-  
+
   // invoke useEffect, which performs side effect AFTER our component renders, will fetch our LibraryInfo cards
   useEffect(() => {
     // we fetch our cards
@@ -23,24 +23,14 @@ function Library() {
   }, []);
 
   return (
-    <div id="page-container">
-      <button>
-
-        <Link to="/add-library">
-          +
-        </Link>
-
-      </button>
-      
+    <div id="page-container" className="flex flex-wrap">
       {libraries.map((lib, i) => (
-        <div key={`${i}`} >
-
-          <LibraryInfo 
-            key={`${i}`} 
-            libId={lib._id} 
-            title={lib.title} 
-            description={lib.description} 
-
+        <div key={`${i}`} className="md:w-1/3 p-4 flex justify-center">
+          <LibraryInfo
+            key={`${i}`}
+            libId={lib._id}
+            title={lib.title}
+            description={lib.description}
             libraries={libraries}
           />
         </div>
