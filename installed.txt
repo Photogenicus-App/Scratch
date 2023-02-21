@@ -33,3 +33,6 @@ git pull origin dev
 we should then see our changes merged in dev
 
 test merge2
+
+added .env - a file used to store hidden dbs or the like, excluded from github repos
+  added it manually
