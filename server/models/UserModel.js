@@ -11,6 +11,8 @@ const UserSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+// here we hash the password when a new user doc is created
 UserSchema.pre('save', async function (next) {
   this.password = await bcrypt.hash(this.password, 1);
   return next();

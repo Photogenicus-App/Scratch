@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const Login = () => {
+
+    const navigate = useNavigate();
 
     const submit = (event) => {
         event.preventDefault();
@@ -21,20 +24,26 @@ const Login = () => {
         }
         fetch('/user/login', options)
         .then((data) => data.json())
-        .then((data) => console.log(data))
+        .then((data) => {
+            console.log(data)
+            // if valid go to home
+            if(data.err) {
+                alert('Incorrect username or password');
+                const form = document.getElementById('login-form')
+                form.reset();
+            } else {
+                navigate('/home');
+            };
+        })
     }
 
     return (
         <div>
-            <header>
-                <ul>
-                    <li>header-item1</li>
-                    <li>header-item2</li>
-                    <li>header-item3</li>
-                </ul>
-            </header>
+            <div id="header">
+            <h1>photogenicus Sorcis</h1>
+            </div>
             <div>
-                <form onSubmit={submit}>
+                <form onSubmit={submit} id="login-form">
                     <label>Username: </label><br/>
                     <input type="text" placeholder="user1234" id="user1" /><br/>
                     <label>Password: </label><br/>

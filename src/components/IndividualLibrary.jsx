@@ -11,8 +11,6 @@ function IndividualLibrary() {
   // grab our libraries from state passed from link
   const libraries = location.state.libraries;
 
-  console.log('yes', libraries);
-
   // we now have our libraries in an array, use find to grab the one that fits our id
   const foundLibrary = libraries.find(libr => libr._id === location.state.libId);
 
@@ -62,7 +60,7 @@ function IndividualLibrary() {
 
         <div>
           <h1>
-            {title}`
+            {title}
           </h1>
   
           <h5>
