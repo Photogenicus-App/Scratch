@@ -11,13 +11,17 @@ function IndividualLibrary() {
   // grab our libraries from state passed from link
   const libraries = location.state.libraries;
 
+  console.log('yes', libraries);
+
   // we now have our libraries in an array, use find to grab the one that fits our id
   const foundLibrary = libraries.find(libr => libr._id === location.state.libId);
 
+  console.log(foundLibrary);
+
   // using useState define state for our library props and an edit
-  const [title, setTitle] = useState(library.title);
-  const [description, setDescription] = useState(library.description);
-  const [studyMaterial, setStudyMaterial] = useState(library.studyMaterial);
+  const [title, setTitle] = useState(foundLibrary.title);
+  const [description, setDescription] = useState(foundLibrary.description);
+  const [studyMaterial, setStudyMaterial] = useState(foundLibrary.studyMaterial);
   const [edit, setEdit] = useState(false);
 
   // define a function to change edit to rerender our library with inputs

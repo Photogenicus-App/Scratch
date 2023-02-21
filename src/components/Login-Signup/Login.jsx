@@ -5,10 +5,19 @@ const Login = () => {
 
     const submit = (event) => {
         event.preventDefault();
+
+        const user = document.getElementById('user1');
+        const pass = document.getElementById('pass1');
+        
+        const info = {
+            username: user.value,
+            password: pass.value  
+        };
+
         const options = {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({values: event.target})
+            body: JSON.stringify(info)
         }
         fetch('/user/login', options)
         .then((data) => data.json())
@@ -27,9 +36,9 @@ const Login = () => {
             <div>
                 <form onSubmit={submit}>
                     <label>Username: </label><br/>
-                    <input type="text" placeholder="user1234" /><br/>
+                    <input type="text" placeholder="user1234" id="user1" /><br/>
                     <label>Password: </label><br/>
-                    <input type="text" placeholder="qwerty" /><br/>
+                    <input type="text" placeholder="qwerty" id="pass1" /><br/>
                     <input type="submit" value="Login" /><br/>
                     <Link to="/signup">Sign Up</Link>
                 </form>
