@@ -45,7 +45,7 @@ const Signup = () => {
             <div>
                 <form onSubmit={submit}>
                     <label>Username: </label><br/>
-                    <input type="text" placeholder="user123" id="user" /><br/>
+                    <input type="text" placeholder="user1234" id="user" /><br/>
                     <label>Email: </label><br/>
                     <input type="text" placeholder="user123@gmail.com" id="email" /><br/>
                     <label>Password: </label><br/>
