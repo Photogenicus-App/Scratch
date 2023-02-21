@@ -9,7 +9,6 @@ const LibraryController = {
     try {
       // Await result of finding library and assign to foundLibrary
       const foundLibrary = await Library.find();
-      console.log(foundLibrary);
       // If no libraries found return error of no library found
       if (!foundLibrary.length) {
         return next({

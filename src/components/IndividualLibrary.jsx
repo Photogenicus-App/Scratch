@@ -56,52 +56,89 @@ function IndividualLibrary() {
 
   if (!edit) {
     return (
-      <div id="page-container">
+      <div
+        id="page-container"
+        className="flex flex-col items-center text-center bg-gradient-to-t from-white to-indigo-500"
+      >
         <div id="header">
-          <h1>photogenicus Sorcis</h1>
+          <h1>
+            photogenicus Sorcis <br />
+            <br />
+          </h1>
         </div>
 
         <div>
-          <h1>{title}</h1>
+          <h1 className="w-32 text-xl mx-auto bg-indigo-400 m-3 rounded">
+            {title}
+          </h1>
 
-          <h5>{description}</h5>
+          <h5 className="w-auto mx-auto bg-indigo-400 m-5">{description}</h5>
 
-          <p>{studyMaterial}</p>
+          <p className="w-auto mx-auto bg-indigo-400 m-8">{studyMaterial}</p>
         </div>
 
-        <button onClick={handleEditButton}>edit</button>
+        <button
+          onClick={handleEditButton}
+          className="w-36 mx-auto bg-indigo-800 text-white h-10 rounded hover:text-indigo-600 hover:border-indigo-600 hover:border hover:bg-white transition duration-200 ease-in-out justify-center flex items-center"
+        >
+          edit
+        </button>
       </div>
     );
   } else {
     return (
-      <div id="page-container">
+      <div
+        id="page-container"
+        className="flex flex-col items-center text-center bg-gradient-to-t from-white to-indigo-500"
+      >
         <div id="header">
-          <h1>photogenicus Sorcis</h1>
+          <h1>
+            photogenicus Sorcis <br />
+            <br />
+          </h1>
         </div>
 
         <div>
           <h1>
-            <input value={title} onChange={(e) => setTitle(e.target.value)} />
+            <input
+              className="w-32 mx-auto m-3 rounded-sm"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
           </h1>
 
           <h5>
             <input
+              className="w-auto mx-auto m-5 rounded-sm"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
           </h5>
 
           <p>
-            <input
+            <textarea
+              className="w-full mx-auto m-8 rounded-sm"
               value={studyMaterial}
               onChange={(e) => setStudyMaterial(e.target.value)}
             />
           </p>
         </div>
 
-        <button onClick={() => setEdit(false)}>cancel</button>
+        <div className="flex">
+          <button
+            className="w-36 mx-auto bg-indigo-800 text-white h-10 rounded hover:text-indigo-600 hover:border-indigo-600 hover:border hover:bg-white transition duration-200 ease-in-out justify-center flex items-center"
+            onClick={handleSaveEdit}
+          >
+            save
+          </button>
 
-        <button onClick={handleSaveEdit}>save</button>
+          <button
+            className="w-36 mx-auto bg-indigo-400 text-white h-10 rounded hover:text-indigo-600 hover:border-indigo-600 hover:border hover:bg-white transition duration-200 ease-in-out justify-center flex items-center"
+            onClick={() => setEdit(false)}
+          >
+            cancel
+          </button>
+        </div>
       </div>
     );
   }

@@ -9,11 +9,9 @@ const router = express.Router();
 
 // Router for get request to library to receive all libraries
 router.get('/library', LibraryController.getLibrary, (req, res) => {
-  console.log('entered get');
   // Sends 200 status and the entire library back to the client
-  res.status(200).json(res.locals.library)
-}
-);
+  res.status(200).json(res.locals.library);
+});
 
 // Router for post to library creating new library
 router.post('/library', LibraryController.newLibrary, (req, res) =>
