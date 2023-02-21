@@ -19,7 +19,7 @@ function Library() {
         console.log(libraries);
       })
       // catch errs
-      .catch((err) => console.log(err));
+      .catch((err) => console.log('err :', err));
   }, []);
 
   return (
