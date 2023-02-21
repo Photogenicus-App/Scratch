@@ -29,21 +29,23 @@ const Signup = () => {
         .then((data) => {
             console.log(data)
             // need to redirect to home on succesful post
-            navigate('/home')
+            if(data.err) {
+                alert('Username or email already taken.');
+                const form = document.getElementById('signup-form')
+                form.reset();
+            } else {
+                navigate('/home');
+            };
         })
     }
 
     return (
         <div>
-            <header>
-                <ul>
-                    <li>header-item1</li>
-                    <li>header-item2</li>
-                    <li>header-item3</li>
-                </ul>
-            </header>
+            <div id="header">
+            <h1>photogenicus Sorcis</h1>
+            </div>
             <div>
-                <form onSubmit={submit}>
+                <form onSubmit={submit} id="signup-form">
                     <label>Username: </label><br/>
                     <input type="text" placeholder="user1234" id="user" /><br/>
                     <label>Email: </label><br/>
