@@ -60,12 +60,21 @@ function IndividualLibrary() {
         id="page-container"
         className="flex flex-col items-center text-center bg-gradient-to-t from-white to-indigo-500"
       >
+        <div id="header">
+          <h1>
+            photogenicus Sorcis <br />
+            <br />
+          </h1>
+        </div>
+
         <div>
-          <h1 className="w-32 mx-auto bg-indigo-400 m-3">{title}</h1>
+          <h1 className="w-32 text-xl mx-auto bg-indigo-400 m-3 rounded">
+            {title}
+          </h1>
 
-          <h5 className="w-32 mx-auto bg-indigo-400 m-5">{description}</h5>
+          <h5 className="w-auto mx-auto bg-indigo-400 m-5">{description}</h5>
 
-          <p className="w-9/12 mx-auto bg-indigo-400 m-8">{studyMaterial}</p>
+          <p className="w-auto mx-auto bg-indigo-400 m-8">{studyMaterial}</p>
         </div>
 
         <button
@@ -83,13 +92,16 @@ function IndividualLibrary() {
         className="flex flex-col items-center text-center bg-gradient-to-t from-white to-indigo-500"
       >
         <div id="header">
-          <h1>photogenicus Sorcis</h1>
+          <h1>
+            photogenicus Sorcis <br />
+            <br />
+          </h1>
         </div>
 
         <div>
           <h1>
             <input
-              className="w-32 mx-auto bg-indigo-400 m-3"
+              className="w-32 mx-auto m-3 rounded-sm"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
@@ -97,7 +109,7 @@ function IndividualLibrary() {
 
           <h5>
             <input
-              className="w-32 mx-auto bg-indigo-400 m-5"
+              className="w-auto mx-auto m-5 rounded-sm"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
@@ -105,7 +117,7 @@ function IndividualLibrary() {
 
           <p>
             <textarea
-              className="w-full mx-auto bg-indigo-400 m-8"
+              className="w-full mx-auto m-8 rounded-sm"
               value={studyMaterial}
               onChange={(e) => setStudyMaterial(e.target.value)}
             />

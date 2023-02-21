@@ -3,24 +3,27 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  // used to redirect
   const navigate = useNavigate();
-
+  // send info to backend
   const submit = (event) => {
+    // prevents refreshing the page upon submission
     event.preventDefault();
-
+    // refer to the new info
     const user = document.getElementById('user1');
     const pass = document.getElementById('pass1');
-
+    // create object be passed into request body
     const info = {
       username: user.value,
       password: pass.value,
     };
-
+    // details for the request
     const options = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(info),
     };
+    // post request to the server
     fetch('/user/login', options)
       .then((data) => data.json())
       .then((data) => {

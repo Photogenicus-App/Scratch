@@ -15,7 +15,7 @@ function Home() {
 
       <Link
         to="/add-library"
-        className="ml-auto m-8 w-36 bg-indigo-800 text-white h-10 rounded hover:text-indigo-600 hover:border-indigo-600 hover:border hover:bg-white transition duration-200 ease-in-out justify-center flex items-center"
+        className="text-xl ml-auto m-8 w-36 bg-indigo-800 text-white h-10 rounded hover:text-indigo-600 hover:border-indigo-600 hover:border hover:bg-white transition duration-200 ease-in-out justify-center flex items-center"
       >
         +
       </Link>

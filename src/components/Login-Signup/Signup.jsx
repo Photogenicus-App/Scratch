@@ -2,26 +2,29 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
+  // to redirect the user
   const navigate = useNavigate();
-
+  // submit new info
   const submit = (event) => {
+    // prevents page from reloading immediately upon submission
     event.preventDefault();
-
+    // refer to new info
     const user = document.getElementById('user');
     const email = document.getElementById('email');
     const pass = document.getElementById('pass');
-
+    // create object to send back in req body
     const newUser = {
       username: user.value,
       email: email.value,
       password: pass.value,
     };
-
+    // post request details
     const options = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newUser),
     };
+    // post request to the server
     fetch('/user/signup', options)
       .then((data) => data.json())
       .then((data) => {

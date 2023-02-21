@@ -8,11 +8,14 @@ import Home from './Home/Home';
 import AddLibrary from './AddLibrary';
 import IndividualLibrary from './IndividualLibrary';
 import Navbar from './Navbar';
+import Hero from './Hero';
 
 const App = () => {
   return (
     <div>
-      {/* <Navbar /> */}
+      <nav>
+        <Navbar />
+      </nav>
       <div>
         <Routes>
           <Route path="/" element={<Login />} />
@@ -21,6 +24,9 @@ const App = () => {
           <Route path="/add-library" element={<AddLibrary />} />
           <Route path="/:id" element={<IndividualLibrary />} />
         </Routes>
+      </div>
+      <div>
+        <Hero />
       </div>
     </div>
   );
